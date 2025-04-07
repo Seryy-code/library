@@ -9,10 +9,13 @@ class Library {
     }
   }
   async deleteBook(id) {
-    return this.books.find((item, index) => {
-      if (item.id == id) {
+    return new Promise((resolve, reject) => {
+      const index = this.books.findIndex((item) => item.id === id);
+      if (index !== -1) {
         this.books.splice(index, 1);
-        return item;
+        resolve(true);
+      } else {
+        reject(new Error("Такой книги нет"));
       }
     });
   }

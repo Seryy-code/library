@@ -48,7 +48,7 @@ export default {
     },
     async deleteBookOnLibrary(id) {
       libraryModel.deleteBook(id).then(() => {
-        this.books = libraryModel.books;
+        this.books = [...libraryModel.books];
       });
     },
   },
